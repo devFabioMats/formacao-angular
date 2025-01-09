@@ -12,6 +12,8 @@ export class DataBindingComponent {
   cursoAngular: boolean = true;
   urlImagem = 'http://lorempixel.com.br/500/400/?40'
 
+  valorAtual: string = '';
+
   getValor() {
     return 1;
   }
@@ -22,5 +24,11 @@ export class DataBindingComponent {
 
   botaoClicado() {
     window.alert('Botão clicado!');
+  }
+
+  onKeyUp(evento: KeyboardEvent){
+    
+    this.valorAtual = (<HTMLInputElement>evento.target).value;
+    console.log(this.valorAtual);
   }
 }
