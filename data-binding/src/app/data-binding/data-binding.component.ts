@@ -19,4 +19,8 @@ export class DataBindingComponent {
   getCurtirCurso() {
     return true;
   }
+
+  botaoClicado() {
+    window.alert('Botão clicado!');
+  }
 }
