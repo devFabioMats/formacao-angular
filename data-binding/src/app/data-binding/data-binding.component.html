@@ -44,7 +44,7 @@
             <div class="alert" role="alert" class="alert" role="alert" [class.alert-danger]="classe.value == 'alert-danger'">
                 ERRO
             </div>
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger" role="alert" [style.display]="classe.value == 'alert-danger' ? 'block' : 'none'">
                 Esse texto somente aparece em caso de erro.
             </div>
         </div>
