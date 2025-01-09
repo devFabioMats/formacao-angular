@@ -27,30 +27,25 @@
                 <option value="alert-info">Info</option>
                 <option value="alert-warning">Alerta</option>
                 <option value="alert-danger">Erro</option>
-                <option value="alert-light">Claro</option>
-                <option value="alert-dark">Escuro</option>
             </select>
             <br><br>
 
             <div class="alert {{ classe.value }}"> Texto colorido conforme a combobox selecionada.</div>
 
             <div class="alert" role="alert" class="alert" role="alert" [class.alert-success]="classe.value == 'alert-success'">
-                A simple success alert—check it out!
-            </div>
-            <div class="alert" role="alert" class="alert" role="alert" [class.alert-danger]="classe.value == 'alert-danger'">
-                A simple danger alert—check it out!
-            </div>
-            <div class="alert" role="alert" class="alert" role="alert" [class.alert-warning]="classe.value == 'alert-warning'">
-                A simple warning alert—check it out!
+                SUCESSO
             </div>
             <div class="alert" role="alert" class="alert" role="alert" [class.alert-info]="classe.value == 'alert-info'">
-                A simple info alert—check it out!
+                INFO
             </div>
-            <div class="alert" role="alert" class="alert" role="alert" [class.alert-light]="classe.value == 'alert-light'">
-                A simple light alert—check it out!
+            <div class="alert" role="alert" class="alert" role="alert" [class.alert-warning]="classe.value == 'alert-warning'">
+                ALERTA
             </div>
-            <div class="alert" role="alert" class="alert" role="alert" [class.alert-dark]="classe.value == 'alert-dark'">
-                A simple dark alert—check it out!
+            <div class="alert" role="alert" class="alert" role="alert" [class.alert-danger]="classe.value == 'alert-danger'">
+                ERRO
+            </div>
+            <div class="alert alert-danger" role="alert">
+                Esse texto somente aparece em caso de erro.
             </div>
         </div>
     </article>
