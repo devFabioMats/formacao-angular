@@ -13,6 +13,8 @@ export class DataBindingComponent {
   urlImagem = 'http://lorempixel.com.br/500/400/?40'
 
   valorAtual: string = '';
+  valorSalvo: string = '';
+
 
   getValor() {
     return 1;
@@ -26,9 +28,11 @@ export class DataBindingComponent {
     window.alert('Botão clicado!');
   }
 
-  onKeyUp(evento: KeyboardEvent){
-    
+  onKeyUp(evento: KeyboardEvent) {
     this.valorAtual = (<HTMLInputElement>evento.target).value;
-    console.log(this.valorAtual);
   }
+
+  salvarValor(valor: string) {
+    this.valorSalvo = valor;
+  } 
 }
