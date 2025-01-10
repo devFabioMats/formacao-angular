@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'contador',
@@ -12,11 +12,16 @@ export class OutputPropertyComponent {
   @Input()
   valor: number = 0;
 
+  @Output()
+  mudouValor = new EventEmitter();
+
   incrementa() {
     this.valor++;
+    this.mudouValor.emit({novoValor: this.valor});
   }
 
   decrementa() {
     this.valor--;
+    this.mudouValor.emit({novoValor: this.valor});
   }
 }
