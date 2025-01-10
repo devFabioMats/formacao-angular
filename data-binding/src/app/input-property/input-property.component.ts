@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrl: './input-property.component.css'
 
   inputs: [
-    'nomeCurso'
+    'nomeCurso:nome'
   ]
 })
 export class InputPropertyComponent implements OnInit {
