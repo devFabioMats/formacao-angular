@@ -26,6 +26,8 @@ export class DataBindingComponent {
 
   nomeDoCurso: string = 'Angular';
 
+  valorInicial = 100;
+
   getValor() {
     return 1;
   }

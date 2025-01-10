@@ -7,14 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
   templateUrl: './input-property.component.html',
   styleUrl: './input-property.component.css'
 
-  inputs: [
-    'nomeCurso:nome'
-  ]
+  //inputs: ['nomeCurso:nome']
 })
 export class InputPropertyComponent implements OnInit {
   
-  //@Input('nome') 
-  nomeCurso: string = '';
+  // @Input('nome') 
+  // nomeCurso: string = '';
 
   constructor() {}
 
