@@ -3,14 +3,14 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-data-binding',
   standalone: false,
-  
+
   templateUrl: './data-binding.component.html',
-  styleUrl: './data-binding.component.css'
+  styleUrl: './data-binding.component.css',
 })
 export class DataBindingComponent {
   url: any = 'https://www.linkedin.com/in/fabiomats/';
   cursoAngular: boolean = true;
-  urlImagem = 'http://lorempixel.com.br/500/400/?40'
+  urlImagem = 'http://lorempixel.com.br/500/400/?40';
 
   valorAtual: string = '';
   valorSalvo: string = '';
@@ -21,12 +21,12 @@ export class DataBindingComponent {
 
   pessoa: any = {
     nome: 'Fabio',
-    idade: 21
-  }
+    idade: 21,
+  };
 
   nomeDoCurso: string = 'Angular';
 
-  valorInicial = 100;
+  valorInicial = 0;
 
   getValor() {
     return 1;
@@ -46,7 +46,7 @@ export class DataBindingComponent {
 
   salvarValor(valor: string) {
     this.valorSalvo = valor;
-  } 
+  }
 
   onMouseOverOut() {
     this.isMouseOver = !this.isMouseOver;
