@@ -19,13 +19,17 @@ export class OutputPropertyComponent {
 
   @Output() mudouValor = new EventEmitter();
 
+  @ViewChild('campoInput', { static: false }) campoValorInput!: ElementRef;
+
   incrementa() {
-    this.valor++;
+    this.campoValorInput.nativeElement.value++;
+    // this.valor++;
     this.mudouValor.emit({ novoValor: this.valor });
   }
 
   decrementa() {
-    this.valor--;
+    this.campoValorInput.nativeElement.value--;
+    // this.valor--;
     this.mudouValor.emit({ novoValor: this.valor });
   }
 }
