@@ -113,6 +113,17 @@
               "src/**/*.html"
             ]
           }
+        },
+        "e2e": {
+          "builder": "playwright-ng-schematics:playwright",
+          "options": {
+            "devServerTarget": "diretivas:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "diretivas:serve:production"
+            }
+          }
         }
       }
     }
