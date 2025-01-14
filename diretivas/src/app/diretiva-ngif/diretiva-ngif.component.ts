@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: false,
   
   templateUrl: './diretiva-ngif.component.html',
-  styleUrl: './diretiva-ngif.component.css'
+  styleUrl: './diretiva-ngif.component.scss'
 })
 export class DiretivaNgifComponent {
 
