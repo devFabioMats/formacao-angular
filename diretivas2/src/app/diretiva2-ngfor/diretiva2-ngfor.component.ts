@@ -8,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './diretiva2-ngfor.component.css'
 })
 export class Diretiva2NgforComponent {
-
+  cursos: string[] = ['Angular 2', 'Java', 'Phonegap'];
 }
