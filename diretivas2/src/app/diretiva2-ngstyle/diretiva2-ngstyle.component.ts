@@ -8,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './diretiva2-ngstyle.component.css'
 })
 export class Diretiva2NgstyleComponent {
+  
+  ativo: boolean = false;
+  tamanhoFonte: number = 10;
+
+  mudarAtivo() {
+    this.ativo = !this.ativo;
+  }
 
 }

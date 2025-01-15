@@ -1,1 +1,31 @@
-<p>diretiva2-ngstyle works!</p>
+<h5>Styles com property binding (style binding)</h5><br>
+
+<!-- sem usar o ngstyle -->
+<p>sem usar ngstyle</p>
+<button [style.backgroundColor]="ativo ? 'blue' : 'gray'"
+        [style.color]="ativo ? 'white' : 'black'"
+        [style.fontWeight]="ativo ? 'bold' : 'normal'"
+        [style.fontSize]="tamanhoFonte + 'px'"
+        (click)="mudarAtivo()">
+    >
+    Mudar atributo 'ativo' sem ngStyle
+</button>
+<br>
+<input type="text" [(ngModel)]="tamanhoFonte">
+
+<br><br><br>
+
+<!-- usando o ngstyle -->
+<p>usando ngstyle</p>
+<button 
+    [ngStyle]="{
+        'background-color': (ativo ? 'blue' : 'gray'),
+        'color': (ativo ? 'white' : 'black'),
+        'font-weight': (ativo ? 'bold' : 'normal'),
+        'font-size': (tamanhoFonte + 'px')
+    }"
+    (click)="mudarAtivo()">
+    Mudar atributo 'ativo' usando ngStyle
+</button>
+<br>
+<input type="text" [(ngModel)]="tamanhoFonte">
