@@ -10,6 +10,6 @@ export class FundoAmareloDirective {
     //this.elementRef.nativeElement.style.backgroundColor = 'yellow'; metodo inseguro nao recomendado pelo nagular
 
     this.renderer.setStyle(this.elementRef.nativeElement, 'background-color', 'yellow');
+    
   }
-
 }

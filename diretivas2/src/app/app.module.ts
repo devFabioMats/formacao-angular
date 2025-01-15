@@ -25,7 +25,7 @@ import { Diretivas2CustomizadasComponent } from './diretivas2-customizadas/diret
     OperadorElvisComponent,
     ExemploNgContentComponent,
     FundoAmareloDirective,
-    Diretivas2CustomizadasComponent
+    Diretivas2CustomizadasComponent,
   ],
   imports: [
     BrowserModule,
