@@ -1,1 +1,14 @@
 <p>operador-elvis works!</p>
+<br>
+
+<p>Descrição: {{ tarefa.descricao }}</p>
+<!-- <p>Responsável: {{ tarefa.responsavel.nome }}</p> -->
+
+<!-- Operador Ternário (modo "errado") -->
+<p>Responsável: {{ tarefa.responsavel != null ? tarefa.responsavel.nome : ''  }}</p>
+
+<!-- Operador Elvis -->
+<!-- <p>Responsável: {{ tarefa.responsavel?.nome }}</p> -->
+
+<!-- Operador Elvis -->
+<p>Responsável: {{ tarefa.responsavel?.usuario?.nome }}</p>

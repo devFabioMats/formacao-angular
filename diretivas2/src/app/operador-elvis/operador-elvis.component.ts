@@ -8,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './operador-elvis.component.css'
 })
 export class OperadorElvisComponent {
+  tarefa: any = {
+
+    descricao: 'Descrição da tarefa',
+    responsavel: {
+      usuario: null
+    }
+    };
 
 }
