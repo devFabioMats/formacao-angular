@@ -9,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class Diretiva2NgclassComponent {
 
+  meuFavorito: boolean = false;
+
+  onClick() {
+    this.meuFavorito = !this.meuFavorito;
+  }
 }
