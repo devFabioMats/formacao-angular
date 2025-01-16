@@ -10,12 +10,14 @@
 
 <h5>Diretiva Estrutura customizada - ngElse</h5>
 
-<div *ngIf="mostrarCursos">
-  Lista de cursos aqui
+<!-- <div *ngIf="mostrarCursos">
+  Lista de cursos aqui.
 </div>
 <div *ngIf="!mostrarCursos">
-  Nenhum curso encontrado para serem exibidos
-</div>
+  Nenhum curso encontrado para serem exibidos.
+</div> -->
+<div *ngIf="mostrarCursos; else elseBlock">Lista de cursos aqui.</div>
+<ng-template #elseBlock>Nenhum curso encontrado para serem exibidos.</ng-template>
 
 <br>
 
