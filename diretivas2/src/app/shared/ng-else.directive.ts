@@ -1,11 +1,11 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: '[appNgElse]',
+  selector: '[ngElse]',
   standalone: false
 })
 export class NgElseDirective {
-
+  
   constructor() { }
 
 }
