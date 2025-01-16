@@ -1,29 +1,40 @@
 import { Component } from '@angular/core';
 import { CursosService } from './cursos.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cursos',
   standalone: false,
-  
+
   templateUrl: './cursos.component.html',
-  styleUrl: './cursos.component.css'
+  styleUrl: './cursos.component.css',
 })
 export class CursosComponent {
   cursos: any[] = [];
-  pagina: number = 1;
+  pagina!: number;
+  incricao: Subscription = new Subscription();
 
   constructor(
     private cursosService: CursosService,
-    private route: ActivatedRoute
-  ) { }
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.cursos = this.cursosService.getCursos();
-    this.route.queryParams.subscribe(
-      (queryParams: any) => {
-        this.pagina = queryParams['pagina'];
-      }
-    );
+
+    this.incricao = this.route.queryParams.subscribe((queryParams: any) => {
+      this.pagina = queryParams['pagina'];
+    });
+  }
+
+  ngOnDestroy() {
+    this.incricao.unsubscribe();
+  }
+
+  proximaPagina() {
+    this.pagina++;
+    this.router.navigate(['/cursos'], { queryParams: { 'pagina': this.pagina } });
   }
 }

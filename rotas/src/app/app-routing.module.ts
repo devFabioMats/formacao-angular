@@ -7,7 +7,7 @@ import { CursosComponent } from './cursos/cursos.component';
 import { CursoDetalheComponent } from './curso-detalhe/curso-detalhe.component';
 import { CursoNaoEncontradoComponent } from './curso-nao-encontrado/curso-nao-encontrado.component';
 
-const APP_ROUTES: Routes = [
+const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'cursos', component: CursosComponent },
   { path: 'curso/:id', component: CursoDetalheComponent },
@@ -16,8 +16,8 @@ const APP_ROUTES: Routes = [
 ];
 
  @NgModule({
-  declarations: [], 
-  imports: [RouterModule.forRoot(APP_ROUTES)],
-  exports: [RouterModule]
+   declarations: [],
+   imports: [RouterModule.forRoot(appRoutes)],
+   exports: [RouterModule],
  })
  export class AppRoutingModule {}
