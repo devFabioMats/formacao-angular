@@ -1,11 +1,12 @@
-<h1>Hello, World! Angular!</h1>
-
 <nav>
-  <a href="/">Home</a><br>
-  <a href="/cursos">Cursos</a><br>
-  <a href="/login">Login</a><br>
+  <div class="nav-wrapper">
+    <a routerLink="/" class="brand-logo right">Rotas Ng2</a>
+    <ul id="nav-mobile" class="left hide-on-med-and-down">
+      <li><a routerLink="/login">Login</a></li>
+      <li><a routerLink="/cursos">Cursos</a></li>
+    </ul>
+  </div>
 </nav>
-
-<p>---------- Abaixo a rota funcionando -----------</p>
-
-<router-outlet></router-outlet>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
