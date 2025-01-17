@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlunosService } from '../alunos.service';
 
 @Component({
@@ -15,8 +15,9 @@ export class AlunoDetalheComponent {
   incricao: Subscription = new Subscription();
 
   constructor(
-    private route: ActivatedRoute,
-    private alunoService: AlunosService
+    public route: ActivatedRoute,
+    public alunoService: AlunosService,
+    public router: Router
   ) {};
 
   ngOnInit () {
@@ -26,6 +27,10 @@ export class AlunoDetalheComponent {
         this.aluno = this.alunoService.getAluno(id);
       }
     );
+  }
+
+  editarContato() {
+    this.router.navigate(['/alunos', this.aluno.id, 'editar']);
   }
 
   ngOnDestroy() {
