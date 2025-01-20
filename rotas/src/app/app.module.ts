@@ -33,7 +33,7 @@ import { AuthService } from './login/auth.service';
     CursoRoutingModule,
     AlunosModule,
   ],
-  providers: [CursosService, AlunosGuard, AuthService],
+  providers: [CursosService, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

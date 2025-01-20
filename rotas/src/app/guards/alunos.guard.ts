@@ -1,26 +1,26 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
 import {
-  CanActivateChild,
   ActivatedRouteSnapshot,
+  CanActivateChildFn,
   RouterStateSnapshot,
 } from '@angular/router';
+import { AuthService } from '../login/auth.service'; // Adjust the path as necessary
+import { Router } from '@angular/router';
+import { inject } from '@angular/core';
 
-@Injectable()
-export class AlunosGuard implements CanActivateChild {
-  canActivateChild(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> | boolean {
+export const AlunosGuard: CanActivateChildFn = (
+  route: ActivatedRouteSnapshot,
+  state: RouterStateSnapshot
+) => {
+  const auth = inject(AuthService);
+  const router = inject(Router);
 
-    console.log(route);
-    console.log(state);
+  console.log('guarda de rota filha alunosssss');
 
-    if (state.url.includes('editar')) {
-      alert('Usuário sem acesso');
-      return of(false);
-    }
-
+  if (auth.verificaUsuarioAutenticado) {
     return true;
   }
-}
+
+  router.navigate(['/login']);
+
+  return false;
+};
