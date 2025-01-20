@@ -15,6 +15,8 @@ export const AlunosGuard: CanActivateChildFn = (
   const router = inject(Router);
 
   console.log('Guarda de Rota: Alunos (FILHA)');
+  console.log(route);
+  console.log(state);
 
   if (auth.verificaUsuarioAutenticado) {
     return true;
