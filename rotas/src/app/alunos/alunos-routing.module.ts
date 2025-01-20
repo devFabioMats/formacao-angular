@@ -5,13 +5,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AlunosComponent } from './alunos.component';
 import { AlunoDetalheComponent } from './aluno-detalhe/aluno-detalhe.component';
 import { AlunoFormComponent } from './aluno-form/aluno-form.component';
-
+import { CursosGuard } from '../guards/cursos.guard';
 
 const alunosRoutes: Routes = [
   { path: 'alunos', component: AlunosComponent, children: [
-      { path: 'novo', component: AlunoFormComponent },
-      { path: ':id', component: AlunoDetalheComponent },
-      { path: ':id/editar', component: AlunoFormComponent },
+      { path: 'novo', component: AlunoFormComponent, canActivateChild: [CursosGuard] },
+      { path: ':id', component: AlunoDetalheComponent, canActivateChild: [CursosGuard] },
+      { path: ':id/editar', component: AlunoFormComponent, canActivateChild: [CursosGuard] },
     ]}
 ];
 

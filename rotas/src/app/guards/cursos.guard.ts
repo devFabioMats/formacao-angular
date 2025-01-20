@@ -1,5 +1,19 @@
-import { CanActivateChildFn } from '@angular/router';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import {
+  CanActivateChild,
+  ActivatedRouteSnapshot,
+  RouterStateSnapshot,
+} from '@angular/router';
 
-export const CursosGuard: CanActivateChildFn = (childRoute, state) => {
-  return true;
-};
+@Injectable()
+export class CursosGuard implements CanActivateChild {
+  canActivateChild(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> | boolean {
+    console.log('guarda de rota filha');
+
+    return true;
+  }
+}
