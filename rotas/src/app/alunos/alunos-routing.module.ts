@@ -30,7 +30,7 @@ const alunosRoutes: Routes = [
 ];
 
 @NgModule({
-    imports: [ CommonModule ,RouterModule.forChild(alunosRoutes) ],
+    imports: [ CommonModule, RouterModule.forChild(alunosRoutes) ],
     exports: [ RouterModule ],
     declarations: [],
     bootstrap: [],
