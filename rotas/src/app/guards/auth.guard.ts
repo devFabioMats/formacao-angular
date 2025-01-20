@@ -14,7 +14,7 @@ export const AuthGuard: CanActivateFn = (
   const auth = inject(AuthService);
   const router = inject(Router);
 
-  console.log('guardaade rota paiii');
+  console.log('guarda de rota paiii');
 
   if (auth.verificaUsuarioAutenticado) {
     return true;
