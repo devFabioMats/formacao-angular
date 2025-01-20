@@ -13,7 +13,6 @@ import { CursoNaoEncontradoComponent } from './cursos/curso-nao-encontrado/curso
 import { CursoRoutingModule } from './cursos/cursos-routing.module';
 import { AlunosModule } from './alunos/alunos.module';
 import { AlunosGuard } from './guards/alunos.guard';
-import { CursosGuard } from './guards/cursos.guard';
 import { AuthService } from './login/auth.service';
 // import { AlunosComponent } from './alunos/alunos.component';
 
@@ -34,7 +33,7 @@ import { AuthService } from './login/auth.service';
     CursoRoutingModule,
     AlunosModule,
   ],
-  providers: [CursosService, AlunosGuard, CursosGuard, AuthService],
+  providers: [CursosService, AlunosGuard, AuthService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
