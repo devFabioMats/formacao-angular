@@ -6,11 +6,13 @@ import { AlunosComponent } from './alunos.component';
 import { AlunoDetalheComponent } from './aluno-detalhe/aluno-detalhe.component';
 import { AlunoFormComponent } from './aluno-form/aluno-form.component';
 import { AlunosGuard } from '../guards/alunos.guard';
+import { AuthGuard } from '../guards/auth.guard';
 
 const alunosRoutes: Routes = [
   {
     path: 'alunos',
     component: AlunosComponent,
+    canActivate: [AuthGuard],
     canActivateChild: [AlunosGuard],
     children: [
       {

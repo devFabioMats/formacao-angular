@@ -14,13 +14,13 @@ export const AuthGuard: CanActivateFn = (
   const auth = inject(AuthService);
   const router = inject(Router);
 
-  console.log('guarda de rota paiii');
+  console.log('Guarda de Rota: PAI - Autenticação');
 
   if (auth.verificaUsuarioAutenticado) {
     return true;
   }
 
+  alert('Usuário sem acesso');
   router.navigate(['/login']);
-
   return false;
 };

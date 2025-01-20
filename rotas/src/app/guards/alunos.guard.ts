@@ -14,13 +14,13 @@ export const AlunosGuard: CanActivateChildFn = (
   const auth = inject(AuthService);
   const router = inject(Router);
 
-  console.log('guarda de rota filha alunosssss');
+  console.log('Guarda de Rota: Alunos (FILHA)');
 
   if (auth.verificaUsuarioAutenticado) {
     return true;
   }
 
+  alert('Usuário sem acesso');
   router.navigate(['/login']);
-
   return false;
 };
