@@ -17,6 +17,6 @@ export class AlunosDeactivateGuard implements CanDeactivate<AlunoFormComponent> 
 
     console.log('Guarda de desativação dos alunos !!!');
 
-    return true;
+    return component.podeMudarRota() ?? false;
   }
 }
