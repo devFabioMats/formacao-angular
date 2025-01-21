@@ -12,7 +12,7 @@ import { AlunosService } from '../alunos.service';
 })
 export class AlunoDetalheComponent {
   aluno: any = {};
-  incricao: Subscription = new Subscription();
+  inscricao: Subscription = new Subscription();
 
   constructor(
     public route: ActivatedRoute,
@@ -21,21 +21,28 @@ export class AlunoDetalheComponent {
   ) {};
 
   ngOnInit () {
-    this.incricao = this.route.params.subscribe(
-      (params: any) => {
-        let id = params['id'];
-        this.aluno = this.alunoService.getAluno(id);
+    // this.incricao = this.route.params.subscribe(
+    //   (params: any) => {
+    //     let id = params['id'];
+    //     this.aluno = this.alunoService.getAluno(id);
+    //   }
+    // );
+
+    console.log('ngOnInit: AlunoDetalheComponent');
+
+    this.inscricao = this.route.data.subscribe(
+      (info) => {
+        console.log('Recebendo o objeto Aluno do resolver');
+        this.aluno = info['aluno'];
       }
     );
-  }
+    }
 
   editarContato() {
     this.router.navigate(['/alunos', this.aluno.id, 'editar']);
   }
 
   ngOnDestroy() {
-    this.incricao.unsubscribe();
-  }
-  
-
+    this.inscricao.unsubscribe();
+  } 
 }
