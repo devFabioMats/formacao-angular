@@ -15,7 +15,7 @@ export class AlunosDeactivateGuard implements CanDeactivate<AlunoFormComponent> 
     nextState?: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
 
-    console.log('Guarda de desativação');
+    console.log('Guarda de desativação dos alunos !!!');
 
     return true;
   }
