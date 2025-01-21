@@ -9,11 +9,13 @@ import { AuthGuard } from './guards/auth.guard';
 // import { CursoNaoEncontradoComponent } from './cursos/curso-nao-encontrado/curso-nao-encontrado.component';
 
 const appRoutes: Routes = [
-  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  
   // { path: 'cursos', component: CursosComponent },
   // { path: 'curso/:id', component: CursoDetalheComponent },
   { path: 'login', component: LoginComponent },
   // { path: 'naoEncontrado', component: CursoNaoEncontradoComponent },
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

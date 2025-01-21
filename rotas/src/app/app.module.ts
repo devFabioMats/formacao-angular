@@ -14,6 +14,7 @@ import { CursoRoutingModule } from './cursos/cursos-routing.module';
 import { AlunosModule } from './alunos/alunos.module';
 import { AlunosGuard } from './guards/alunos.guard';
 import { AuthService } from './login/auth.service';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 // import { AlunosComponent } from './alunos/alunos.component';
 
 @NgModule({
@@ -24,6 +25,7 @@ import { AuthService } from './login/auth.service';
     CursosComponent,
     CursoDetalheComponent,
     CursoNaoEncontradoComponent,
+    PaginaNaoEncontradaComponent,
     // AlunosComponent,
   ],
   imports: [
