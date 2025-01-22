@@ -6,17 +6,13 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'app-data-form',
   standalone: false,
-  
+
   templateUrl: './data-form.component.html',
-  styleUrl: './data-form.component.css'
+  styleUrl: './data-form.component.css',
 })
 export class DataFormComponent {
-
   formulario!: FormGroup;
-  constructor(
-    private formBuilder: FormBuilder,
-    private http: HttpClient
-  ) { }
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
 
   ngOnInit() {
     // this.formulario = new FormGroup({
@@ -34,14 +30,21 @@ export class DataFormComponent {
     console.log(this.formulario.value);
 
     if (this.formulario.valid) {
-      this.http.post<any>('https://httpbin.org/post', JSON.stringify(this.formulario.value))
+      this.http
+        .post<any>(
+          'https://httpbin.org/post',
+          JSON.stringify(this.formulario.value)
+        )
         .pipe(map((res: any) => res))
-        .subscribe((dados: any) => {
-          console.log(dados);
-          // reseta o form
-          // this.formulario.reset();
-          this.resetar();
-        }, (error: any) => alert('erro'));
+        .subscribe(
+          (dados: any) => {
+            console.log(dados);
+            // reseta o form
+            // this.formulario.reset();
+            this.resetar();
+          },
+          (error: any) => alert('erro')
+        );
     }
   }
 
