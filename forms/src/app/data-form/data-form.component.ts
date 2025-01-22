@@ -51,4 +51,15 @@ export class DataFormComponent {
   resetar() {
     this.formulario.reset();
   }
+
+  verificaValidTouched(campo: any) {
+    return this.formulario.get(campo)?.valid && this.formulario.get(campo)?.touched;
+  }
+
+  aplicaCssErro(campo: any){
+    return {
+      'is-error': this.verificaValidTouched(campo),
+      'is-feedback': this.verificaValidTouched(campo)
+    }
+  }
 }
