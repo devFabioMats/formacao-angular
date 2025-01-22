@@ -43,4 +43,8 @@ export class DataFormComponent {
         }, (error: any) => alert('erro'));
     }
   }
+
+  resetar() {
+    this.formulario.reset();
+  }
 }
