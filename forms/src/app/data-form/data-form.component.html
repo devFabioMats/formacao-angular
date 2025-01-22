@@ -1,1 +1,13 @@
-<p>data-form works!</p>
+<form [formGroup]="formulario">
+  <div class="mb-3">
+    <label for="nome" class="form-label" name="nome">Nome</label>
+    <input type="text" class="form-control" id="nome" name="nome" placeholder="fulanin de tal">
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label" name="email">Email</label>
+    <input type="email" class="form-control" id="email" name="email" placeholder="fulano@sla.dominio">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+  <app-form-debug [form]="formulario"></app-form-debug>
+</form>
