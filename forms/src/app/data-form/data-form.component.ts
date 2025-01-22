@@ -40,7 +40,7 @@ export class DataFormComponent {
           console.log(dados);
           // reseta o form
           this.formulario.reset();
-        });
+        }, (error: any) => alert('erro'));
     }
   }
 }
