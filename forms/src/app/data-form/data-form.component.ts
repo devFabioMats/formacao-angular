@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadoBr } from '../shared/models/estado-br.model';
+import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 
 @Component({
   selector: 'app-data-form',
@@ -24,7 +25,8 @@ export class DataFormComponent {
   constructor(
     private formBuilder: FormBuilder,
     private http: HttpClient,
-    private dropDownService: DropdownService
+    private dropDownService: DropdownService,
+    private cepService: ConsultaCepService
   ) {}
 
   ngOnInit() {
