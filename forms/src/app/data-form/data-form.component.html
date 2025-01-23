@@ -8,6 +8,10 @@
       formControlName="nome"
       placeholder="fulanin de tal"
     />
+    <app-campo-control-erro
+      [mostrarErro]="verificaValidTouched('nome')"
+      msgErro="Nome é obrigatório."
+    ></app-campo-control-erro>
   </div>
 
   <div class="mb-3" [ngClass]="aplicaCssErro('email')">
@@ -19,6 +23,14 @@
       formControlName="email"
       placeholder="fulano@sla.dominio"
     />
+    <app-campo-control-erro
+      [mostrarErro]="verificaValidTouched('email')"
+      msgErro="Email é obrigatório."
+    ></app-campo-control-erro>
+    <app-campo-control-erro
+      [mostrarErro]="verificaValidTouched('email')"
+      msgErro="Email inválido."
+    ></app-campo-control-erro>
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
