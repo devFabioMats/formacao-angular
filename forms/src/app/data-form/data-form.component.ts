@@ -7,6 +7,8 @@ import {
 } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { DropdownService } from '../shared/services/dropdown.service';
+import { EstadoBr } from '../shared/models/estado-br.model';
 
 @Component({
   selector: 'app-data-form',
@@ -17,13 +19,25 @@ import { map } from 'rxjs/operators';
 })
 export class DataFormComponent {
   formulario!: FormGroup;
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
+  estados: EstadoBr[] = [];
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private dropDownService: DropdownService
+  ) {}
 
   ngOnInit() {
     // this.formulario = new FormGroup({
     //   nome: new FormControl(null),
     //   email: new FormControl(null)
     // });
+
+    this.estados = [];
+    this.dropDownService.getEstadosBr().subscribe((dados: EstadoBr[]) => {
+      console.log(dados);
+      this.estados.push(...dados);
+    });
 
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3)]],
@@ -70,10 +84,11 @@ export class DataFormComponent {
   verificaValiacoesForm(formGroup: FormGroup) {
     Object.keys(formGroup.controls).forEach((campo) => {
       console.log(campo);
-      const controle = formGroup.get(campo);  
-      controle!.markAsTouched();  
-      if (controle instanceof FormGroup) {  // <-- Verifica se é um FormGroup
-        this.verificaValiacoesForm(controle);  // <-- Chama a função recursivamente
+      const controle = formGroup.get(campo);
+      controle!.markAsTouched();
+      if (controle instanceof FormGroup) {
+        // <-- Verifica se é um FormGroup
+        this.verificaValiacoesForm(controle); // <-- Chama a função recursivamente
       }
     });
   }

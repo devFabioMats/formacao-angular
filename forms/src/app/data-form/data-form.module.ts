@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-import { FormDebugComponent } from '../form-debug/form-debug.component';
+import { FormDebugComponent } from '../shared/form-debug/form-debug.component';
 import { DataFormComponent } from './data-form.component';
-import { CampoControlErroComponent } from '../campo-control-erro/campo-control-erro.component';
+import { CampoControlErroComponent } from '../shared/campo-control-erro/campo-control-erro.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,7 @@ import { CampoControlErroComponent } from '../campo-control-erro/campo-control-e
     FormDebugComponent,
     CampoControlErroComponent,
   ],
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
+  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, SharedModule],
   exports: [DataFormComponent],
 })
 export class DataFormModule {}
