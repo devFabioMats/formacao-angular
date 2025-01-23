@@ -62,13 +62,20 @@ export class DataFormComponent {
           );
       } else {
         console.log('formulario invalido');
-        Object.keys(this.formulario.controls).forEach((campo) => {
-          console.log(campo);
-          const controle = this.formulario.get(campo);
-          controle!.markAsTouched();
-        });
+        this.verificaValiacoesForm(this.formulario);
       }
     }
+  }
+
+  verificaValiacoesForm(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach((campo) => {
+      console.log(campo);
+      const controle = formGroup.get(campo);  
+      controle!.markAsTouched();  
+      if (controle instanceof FormGroup) {  // <-- Verifica se é um FormGroup
+        this.verificaValiacoesForm(controle);  // <-- Chama a função recursivamente
+      }
+    });
   }
 
   resetar() {
