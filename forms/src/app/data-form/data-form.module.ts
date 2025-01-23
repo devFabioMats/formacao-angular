@@ -14,5 +14,6 @@ import { CampoControlErroComponent } from '../campo-control-erro/campo-control-e
     CampoControlErroComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule, HttpClientModule],
+  exports: [DataFormComponent],
 })
 export class DataFormModule {}
