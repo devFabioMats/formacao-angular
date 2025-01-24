@@ -22,6 +22,7 @@ export class DataFormComponent {
   formulario!: FormGroup;
   estados: EstadoBr[] = [];
   cargos: any[] = [];
+  tecnologias: any[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,6 +40,8 @@ export class DataFormComponent {
     this.estados = [];
 
     this.cargos = this.dropDownService.getCargos();
+
+    this.tecnologias = this.dropDownService.getTecnologias();
 
     // this.dropDownService.getEstadosBr().subscribe((dados: EstadoBr[]) => {
     //   console.log(dados);
