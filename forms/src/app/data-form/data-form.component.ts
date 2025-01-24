@@ -61,6 +61,7 @@ export class DataFormComponent {
         estado: [null, [Validators.required]],
       }),
       cargo: [null],
+      tecnologias: [null],
     });
   }
 
@@ -176,6 +177,13 @@ export class DataFormComponent {
   }
 
   compararCargos(obj1: any, obj2: any) {
+    // primeiro, verifica se os objetos existem, caso existem, executa
+    // a comparação dos atributos nome e nivel, caso contrário, compara
+    // os objetos diretamente
     return obj1 && obj2 ? (obj1.nome === obj2.nome && obj1.nivel === obj2.nivel) : obj1 === obj2;
+  }
+
+  setarTecnologias() {
+    this.formulario.get('tecnologias')!.setValue(['java', 'javascript', 'php']);
   }
 }
