@@ -177,6 +177,30 @@
     </select>
   </div>
 
+  <div class="mb-3" [ngClass]="aplicaCssErro('newsletter')">
+    <label for="newsletter" class="form-label">Newsletter</label>
+    <div id="newsletter" class="row">
+      <label class="radio-inline">
+        <input
+          type="radio"
+          formControlName="newsletter"
+          value="sim"
+          checked
+        />
+        Sim
+      </label>
+      <label class="radio-inline">
+        <input
+          type="radio"
+          formControlName="newsletter"
+          value="nao"
+          checked
+        />
+        Não
+      </label>
+    </div>
+  </div>
+
   <button type="submit" class="btn btn-primary">Submit</button>
   <button class="btn btn-secondary" (click)="resetar()">Cancelar</button>
   <button class="btn btn-info" (click)="setarCargo()">Cargo</button>

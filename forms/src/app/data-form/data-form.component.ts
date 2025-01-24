@@ -62,6 +62,7 @@ export class DataFormComponent {
       }),
       cargo: [null],
       tecnologias: [null],
+      newsletter: [null],
     });
   }
 
