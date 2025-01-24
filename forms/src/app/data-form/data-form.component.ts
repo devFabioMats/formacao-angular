@@ -66,6 +66,7 @@ export class DataFormComponent {
       cargo: [null],
       tecnologias: [null],
       newsletter: ['sim'],
+      termos: [true, Validators.pattern('true')],
     });
   }
 
