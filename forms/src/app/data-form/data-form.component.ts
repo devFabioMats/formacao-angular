@@ -40,10 +40,10 @@ export class DataFormComponent {
 
     this.cargos = this.dropDownService.getCargos();
 
-    this.dropDownService.getEstadosBr().subscribe((dados: EstadoBr[]) => {
-      console.log(dados);
-      this.estados.push(...dados);
-    });
+    // this.dropDownService.getEstadosBr().subscribe((dados: EstadoBr[]) => {
+    //   console.log(dados);
+    //   this.estados.push(...dados);
+    // });
 
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3)]],
@@ -57,7 +57,6 @@ export class DataFormComponent {
         cidade: [null, [Validators.required]],
         estado: [null, [Validators.required]],
       }),
-
       cargo: [null],
     });
   }
@@ -166,5 +165,14 @@ export class DataFormComponent {
         estado: null,
       },
     });
+  }
+
+  setarCargo() {
+    const cargo = { nome: 'Dev', nivel: 'Pleno', desc: 'Dev Pl' };
+    this.formulario.get('cargo')!.setValue(cargo);
+  }
+
+  compararCargos(obj1: any, obj2: any) {
+    return obj1 && obj2 ? (obj1.nome === obj2.nome && obj1.nivel === obj2.nivel) : obj1 === obj2;
   }
 }
