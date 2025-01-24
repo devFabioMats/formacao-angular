@@ -180,24 +180,17 @@
   <div class="mb-3" [ngClass]="aplicaCssErro('newsletter')">
     <label for="newsletter" class="form-label">Newsletter</label>
     <div id="newsletter" class="row">
-      <label class="radio-inline">
-        <input
-          type="radio"
-          formControlName="newsletter"
-          value="sim"
-          checked
-        />
-        Sim
-      </label>
-      <label class="radio-inline">
-        <input
-          type="radio"
-          formControlName="newsletter"
-          value="nao"
-          checked
-        />
-        Não
-      </label>
+      <div class="col-md-4" *ngFor="let opcao of newsletterOp">
+        <label class="radio-inline">
+          <input
+            type="radio"
+            formControlName="newsletter"
+            [value]="opcao.valor"
+            checked
+          />
+          {{ opcao.desc }}
+        </label>
+      </div>
     </div>
   </div>
 

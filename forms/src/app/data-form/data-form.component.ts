@@ -23,6 +23,7 @@ export class DataFormComponent {
   estados: EstadoBr[] = [];
   cargos: any[] = [];
   tecnologias: any[] = [];
+  newsletterOp: any[] = [''];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,6 +44,8 @@ export class DataFormComponent {
 
     this.tecnologias = this.dropDownService.getTecnologias();
 
+    this.newsletterOp = this.dropDownService.getNewsletter();
+
     // this.dropDownService.getEstadosBr().subscribe((dados: EstadoBr[]) => {
     //   console.log(dados);
     //   this.estados.push(...dados);
@@ -62,7 +65,7 @@ export class DataFormComponent {
       }),
       cargo: [null],
       tecnologias: [null],
-      newsletter: [null],
+      newsletter: ['sim'],
     });
   }
 

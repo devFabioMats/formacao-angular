@@ -47,4 +47,11 @@ export class DropdownService {
       { nome: 'kotlin', desc: 'Kotlin' },
     ];
   }
+
+  getNewsletter() {
+    return [
+      { valor: 'sim', desc: 'Sim' },
+      { valor: 'nao', desc: 'Não' },
+    ];
+  }
 }
