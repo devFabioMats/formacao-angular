@@ -12,6 +12,7 @@ import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadoBr } from '../shared/models/estado-br.model';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { FormValidations } from '../shared/form-validation';
+import { VerificaEmailService } from './services/verifica-email.service';
 
 @Component({
   selector: 'app-data-form',
@@ -33,7 +34,8 @@ export class DataFormComponent {
     private formBuilder: FormBuilder,
     private http: HttpClient,
     private dropDownService: DropdownService,
-    private cepService: ConsultaCepService
+    private cepService: ConsultaCepService,
+    private verificaEmailService: VerificaEmailService
   ) {}
 
   ngOnInit() {
@@ -41,6 +43,8 @@ export class DataFormComponent {
     //   nome: new FormControl(null),
     //   email: new FormControl(null)
     // });
+
+    this.verificaEmailService.verificarEmail().subscribe();	
 
     this.estados = [];
 
@@ -50,10 +54,10 @@ export class DataFormComponent {
 
     this.newsletterOp = this.dropDownService.getNewsletter();
 
-    // this.dropDownService.getEstadosBr().subscribe((dados: EstadoBr[]) => {
-    //   console.log(dados);
-    //   this.estados.push(...dados);
-    // });
+    this.dropDownService.getEstadosBr().subscribe((dados: EstadoBr[]) => {
+      console.log(dados);
+      this.estados.push(...dados);
+    });
 
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3)]],
