@@ -5,12 +5,13 @@ import {
   FormBuilder,
   Validators,
   FormArray,
-} from '@angular/forms';
+ AbstractControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadoBr } from '../shared/models/estado-br.model';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
+import { FormValidations } from '../shared/form-validation';
 
 @Component({
   selector: 'app-data-form',
@@ -80,7 +81,7 @@ export class DataFormComponent {
 
   buildFrameworks() {
     const values = this.frameworks.map((v) => new FormControl(false));
-    return this.formBuilder.array(values);
+    return this.formBuilder.array(values, FormValidations.requiredMinCheckbox(1));
     // return [
     //   new FormControl(false),
     //   new FormControl(false),
@@ -88,6 +89,37 @@ export class DataFormComponent {
     //   new FormControl(false),
     // ]
   }
+
+  // requiredMinCheckbox(min = 1) {
+  //   const validator = (formArray: FormArray) => {
+  //     // programacao estruturada
+  //     // const values = formArray.controls;
+  //     // let totalChecked = 0;
+
+  //     // for (let i = 0; i < values.length; i++) {
+  //     //   if (values[i].value) {
+  //     //     totalChecked += 1;
+  //     //   }
+  //     // }
+
+  //     // programacao funcional
+  //     const totalChecked = formArray.controls
+  //       .map((v) => v.value)
+  //       .reduce((total, current) => (current ? total + current : total), 0);
+  //     return totalChecked >= min ? null : { required: true };
+  //   };
+
+  //   requiredMinCheckbox(min = 1){
+  //   const validator = (formArray: AbstractControl) => {
+  //     if(formArray instanceof FormArray){
+  //       const totalChecked = formArray.controls.map(v => v.value)
+  //         .reduce((total: number, atual: number) => (atual ? total + atual : total), 0);
+  //       return totalChecked >= min ? null : {required: true};
+  //     }
+  //     throw new Error('formArray is not an instance of FormArray');
+  //   };
+  //   return validator;
+  // }
 
   onSubmit() {
     console.log(this.formulario.value);

@@ -243,6 +243,10 @@
           {{ frameworks[i] }}
         </label>
       </div>
+      <app-campo-control-erro
+        [mostrarErro]="verificaValidTouched('frameworks')"
+        msgErro="Selecione pelo menos um framework."
+      ></app-campo-control-erro>
     </div>
   </div>
 
