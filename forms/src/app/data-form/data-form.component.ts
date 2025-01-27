@@ -44,7 +44,7 @@ export class DataFormComponent {
     //   email: new FormControl(null)
     // });
 
-    this.verificaEmailService.verificarEmail().subscribe();	
+    // this.verificaEmailService.verificarEmail('email@email.com').subscribe();	
 
     this.estados = [];
 
@@ -61,7 +61,7 @@ export class DataFormComponent {
 
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3)]],
-      email: [null, [Validators.required, Validators.email]],
+      email: [null, [Validators.required, Validators.email], [this.validarEmail.bind(this)]],
       confirmarEmail: [null, [FormValidations.equalsTo('email')]],
       endereco: this.formBuilder.group({
         cep: [null, [Validators.required, FormValidations.cepValidator]],
@@ -268,5 +268,12 @@ export class DataFormComponent {
 
   setarTecnologias() {
     this.formulario.get('tecnologias')!.setValue(['java', 'javascript', 'php']);
+  }
+
+  // validação assíncrona
+  validarEmail(formControl: FormControl) {
+    return this.verificaEmailService
+      .verificarEmail(formControl.value)
+      .pipe(map((emailExiste) => (emailExiste ? { emailInvalido: true } : null)));
   }
 }
