@@ -59,7 +59,7 @@ export class DataFormComponent {
       nome: [null, [Validators.required, Validators.minLength(3)]],
       email: [null, [Validators.required, Validators.email]],
       endereco: this.formBuilder.group({
-        cep: [null, [Validators.required]],
+        cep: [null, [Validators.required, FormValidations.cepValidator]],
         numero: [null, [Validators.required]],
         complemento: [null],
         rua: [null, [Validators.required]],
@@ -81,7 +81,10 @@ export class DataFormComponent {
 
   buildFrameworks() {
     const values = this.frameworks.map((v) => new FormControl(false));
-    return this.formBuilder.array(values, FormValidations.requiredMinCheckbox(1));
+    return this.formBuilder.array(
+      values,
+      FormValidations.requiredMinCheckbox(1)
+    );
     // return [
     //   new FormControl(false),
     //   new FormControl(false),
@@ -174,9 +177,16 @@ export class DataFormComponent {
     this.formulario.reset();
   }
 
-  verificaValidTouched(campo: any) {
+  verificaValidTouched(campo: string) {
     return (
       !this.formulario.get(campo)?.valid &&
+      !!this.formulario.get(campo)?.touched
+    );
+  }
+
+  verificaRequired(campo: string) {
+    return (
+      !this.formulario.get(campo)?.hasError('required') &&
       !!this.formulario.get(campo)?.touched
     );
   }
