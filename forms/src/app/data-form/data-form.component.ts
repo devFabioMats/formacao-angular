@@ -4,6 +4,7 @@ import {
   FormControl,
   FormBuilder,
   Validators,
+  FormArray,
 } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -24,6 +25,8 @@ export class DataFormComponent {
   cargos: any[] = [];
   tecnologias: any[] = [];
   newsletterOp: any[] = [''];
+
+  frameworks = ['Angular', 'React', 'Vue', 'Sencha'];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -67,11 +70,37 @@ export class DataFormComponent {
       tecnologias: [null],
       newsletter: ['sim'],
       termos: [true, Validators.pattern('true')],
+      frameworks: this.buildFrameworks(),
     });
+  }
+
+  frameworksArrayControls() {
+    return (this.formulario.get('frameworks') as FormArray).controls;
+  }
+
+  buildFrameworks() {
+    const values = this.frameworks.map((v) => new FormControl(false));
+    return this.formBuilder.array(values);
+    // return [
+    //   new FormControl(false),
+    //   new FormControl(false),
+    //   new FormControl(false),
+    //   new FormControl(false),
+    // ]
   }
 
   onSubmit() {
     console.log(this.formulario.value);
+
+    let valueSubmit = Object.assign({}, this.formulario.value);
+
+    valueSubmit = Object.assign(valueSubmit, {
+      frameworks: valueSubmit.frameworks
+        .map((v: any, i: any) => (v ? this.frameworks[i] : null))
+        .filter((v: any) => v !== null),
+    });
+
+    console.log(valueSubmit);
 
     if (this.formulario) {
       if (this.formulario.valid) {
@@ -185,7 +214,9 @@ export class DataFormComponent {
     // primeiro, verifica se os objetos existem, caso existem, executa
     // a comparação dos atributos nome e nivel, caso contrário, compara
     // os objetos diretamente
-    return obj1 && obj2 ? (obj1.nome === obj2.nome && obj1.nivel === obj2.nivel) : obj1 === obj2;
+    return obj1 && obj2
+      ? obj1.nome === obj2.nome && obj1.nivel === obj2.nivel
+      : obj1 === obj2;
   }
 
   setarTecnologias() {
