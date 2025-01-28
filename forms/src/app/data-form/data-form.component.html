@@ -8,10 +8,7 @@
       formControlName="nome"
       placeholder="fulanin de tal"
     />
-    <app-campo-control-erro
-      [mostrarErro]="verificaValidTouched('nome')"
-      msgErro="Nome é obrigatório."
-    ></app-campo-control-erro>
+    <!-- <app-error-msg [control]="formulario.get('nome')" label="Nome"></app-error-msg> -->
   </div>
 
   <div class="mb-3" [ngClass]="aplicaCssErro('email')">
@@ -69,7 +66,6 @@
           class="form-control"
           id="cep"
           formControlName="cep"
-          (blur)="consultaCEP()"
         />
         <app-campo-control-erro
           [mostrarErro]="verificaValidTouched('endereco.cep')"

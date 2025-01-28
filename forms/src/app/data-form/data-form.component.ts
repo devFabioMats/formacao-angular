@@ -5,14 +5,18 @@ import {
   FormBuilder,
   Validators,
   FormArray,
- AbstractControl } from '@angular/forms';
+  AbstractControl,
+} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
+import { distinctUntilChanged, map } from 'rxjs/operators';
 import { DropdownService } from '../shared/services/dropdown.service';
 import { EstadoBr } from '../shared/models/estado-br.model';
 import { ConsultaCepService } from '../shared/services/consulta-cep.service';
 import { FormValidations } from '../shared/form-validation';
 import { VerificaEmailService } from './services/verifica-email.service';
+import { tap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
+import { of, EMPTY, scheduled, asyncScheduler } from 'rxjs';
 
 @Component({
   selector: 'app-data-form',
@@ -44,7 +48,7 @@ export class DataFormComponent {
     //   email: new FormControl(null)
     // });
 
-    // this.verificaEmailService.verificarEmail('email@email.com').subscribe();	
+    // this.verificaEmailService.verificarEmail('email@email.com').subscribe();
 
     this.estados = [];
 
@@ -61,7 +65,11 @@ export class DataFormComponent {
 
     this.formulario = this.formBuilder.group({
       nome: [null, [Validators.required, Validators.minLength(3)]],
-      email: [null, [Validators.required, Validators.email], [this.validarEmail.bind(this)]],
+      email: [
+        null,
+        [Validators.required, Validators.email],
+        [this.validarEmail.bind(this)],
+      ],
       confirmarEmail: [null, [FormValidations.equalsTo('email')]],
       endereco: this.formBuilder.group({
         cep: [null, [Validators.required, FormValidations.cepValidator]],
@@ -78,6 +86,21 @@ export class DataFormComponent {
       termos: [true, Validators.pattern('true')],
       frameworks: this.buildFrameworks(),
     });
+
+    this.formulario
+      .get('endereco.cep')!
+      .statusChanges.pipe(
+        distinctUntilChanged(),
+        tap((value) => console.log('status do cep', value)),
+        switchMap((status) =>
+          status === 'VALID'
+            ? this.cepService.consultaCep(
+                this.formulario.get('endereco.cep')!.value
+              )
+            : scheduled(of(null), asyncScheduler)
+        )
+      )
+      .subscribe((dados) => { dados ? this.populaDadosForm(dados) : {}; });
   }
 
   frameworksArrayControls() {
@@ -274,6 +297,9 @@ export class DataFormComponent {
   validarEmail(formControl: FormControl) {
     return this.verificaEmailService
       .verificarEmail(formControl.value)
-      .pipe(map((emailExiste) => (emailExiste ? { emailInvalido: true } : null)));
+      .pipe(
+        map((emailExiste) => (emailExiste ? { emailInvalido: true } : null))
+      );
   }
 }
+
