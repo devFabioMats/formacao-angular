@@ -5,16 +5,12 @@ import { CampoControlErroComponent } from './campo-control-erro/campo-control-er
 import { DropdownService } from './services/dropdown.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorMsgComponent } from './error-msg/error-msg.component';
+import { InputFieldComponent } from './input-field/input-field.component';
 
 @NgModule({
-  declarations: [
-    ErrorMsgComponent
-  ],
-  imports: [
-    CommonModule,
-    HttpClientModule
-  ],
-  exports: [ErrorMsgComponent],
-  providers: [ DropdownService ]
+  declarations: [ErrorMsgComponent, InputFieldComponent],
+  imports: [CommonModule, HttpClientModule],
+  exports: [ErrorMsgComponent, InputFieldComponent],
+  providers: [DropdownService],
 })
-export class SharedModule { }
+export class SharedModule {}
